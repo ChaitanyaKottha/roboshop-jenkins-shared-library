@@ -1,29 +1,38 @@
+def call() {
+    pipeline {
 
-pipeline{
-    agent{
-        label 'workstation'
-    }
-    stages{
-        stage('Compile/Build') {
-            steps{
-                echo 'Compile'
-            }
+        agent {
+            label 'workstation'
         }
-        stage('Unit tests') {
-            steps{
-                echo 'unit test'
-            }
-        }
-        stage('Quality Control') {
-            steps{
-                echo 'Quality control'
-            }
-        }
-        stage('Upload code to centralized place') {
-            steps{
-                echo 'upload'
-            }
-        }
-    }
 
+        stages {
+
+            stage('Compile/Build') {
+                steps {
+                    echo 'compile'
+                }
+            }
+
+            stage('Unit Tests') {
+                steps {
+                    echo 'Unit Tests'
+                }
+            }
+
+            stage('Quality Control') {
+                steps {
+                    echo 'Quality Control'
+                }
+            }
+
+            stage('Upload Code to Centralized Place') {
+                steps {
+                    echo 'Upload'
+                }
+            }
+
+
+        }
+
+    }
 }
