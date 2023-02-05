@@ -18,6 +18,11 @@ def unittests() {
         sh 'echo Test cases'
     }
     if (app_lang == 'maven') {
-        sh 'mvn package'
+        sh 'mvn test'
+        //sh 'echo Test cases'
+    }
+    if (app_lang == 'python') {
+        sh 'python -m unittest'
+        //sh 'echo Test cases'
     }
 }
