@@ -13,13 +13,14 @@ def call() {
                         script {
                             common.compile()
                         }
-
                     }
                 }
 
                 stage('Unit Tests') {
                     steps {
-                        common.unittests()
+                        script {
+                            common.unittests()
+                        }
                     }
                 }
 
@@ -40,6 +41,6 @@ def call() {
 
         }
     } catch(Exception e) {
-        common.email('Failed')
+        common.email("Failed")
     }
 }
