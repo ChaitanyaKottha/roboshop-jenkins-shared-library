@@ -5,9 +5,19 @@ def compile() {
     if (app_lang == 'maven') {
         sh 'mvn package'
     }
-    if (app_lang == 'golang') {
+    if (app_lang == 'golang') {0
         sh 'go mod init dispatch'
         sh 'go get'
         sh 'go build'
+    }
+}
+def unittests() {
+    if (app_lang == 'nodejs') {
+        // developer is missing unit test cases in our project. Hence we are skipping to proceed
+        //sh 'npm test'
+        sh 'echo Test cases'
+    }
+    if (app_lang == 'maven') {
+        sh 'mvn package'
     }
 }
