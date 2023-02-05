@@ -5,7 +5,7 @@ def compile() {
     if (app_lang == 'maven') {
         sh 'mvn package'
     }
-    if (app_lang == 'golang') {0
+    if (app_lang == 'golang') {
         sh 'go mod init dispatch'
         sh 'go get'
         sh 'go build'
@@ -14,12 +14,7 @@ def compile() {
 def unittests() {
     if (app_lang == 'nodejs') {
         // developer is missing unit test cases in our project. Hence we are skipping to proceed
-        try {
-            sh 'npm test'
-            //sh 'echo Test cases '\
-        } catch(Exception e) {
-                email("unit tests failed")
-        }
+        sh 'npm test'
     }
     if (app_lang == 'maven') {
         sh 'mvn test'
