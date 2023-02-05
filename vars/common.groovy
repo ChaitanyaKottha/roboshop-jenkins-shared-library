@@ -14,8 +14,12 @@ def compile() {
 def unittests() {
     if (app_lang == 'nodejs') {
         // developer is missing unit test cases in our project. Hence we are skipping to proceed
-        sh 'npm test || true'
-        //sh 'echo Test cases '
+        try {
+            sh 'npm test'
+            //sh 'echo Test cases '\
+        } catch(Exception e) {
+                email("unit tests failed")
+        }
     }
     if (app_lang == 'maven') {
         sh 'mvn test'
@@ -25,4 +29,8 @@ def unittests() {
         sh 'python -m unittest'
         //sh 'echo Test cases'
     }
+}
+
+def email(email_note){
+    sh 'echo ${email_note}'
 }
