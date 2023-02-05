@@ -1,15 +1,16 @@
 def compile() {
     if (app_lang == 'nodejs') {
         sh 'npm install'
+        sh 'env'
     }
     if (app_lang == 'maven') {
         sh 'mvn package'
     }
-    if (app_lang == 'golang') {
-        sh 'go mod init dispatch'
-        sh 'go get'
-        sh 'go build'
-    }
+    //if (app_lang == 'golang') {
+    //    sh 'go mod init dispatch'
+    //    sh 'go get'
+    //    sh 'go build'
+    //}
 }
 def unittests() {
     if (app_lang == 'nodejs') {
@@ -21,7 +22,7 @@ def unittests() {
         //sh 'echo Test cases'
     }
     if (app_lang == 'python') {
-        sh 'python -m unittest'
+        sh 'python3 -m unittest'
         //sh 'echo Test cases'
     }
 }
