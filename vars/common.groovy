@@ -14,8 +14,8 @@ def compile() {
 def unittests() {
     if (app_lang == 'nodejs') {
         // developer is missing unit test cases in our project. Hence we are skipping to proceed
-        //sh 'npm test'
-        sh 'echo Test cases'
+        sh 'npm test || true'
+        //sh 'echo Test cases '
     }
     if (app_lang == 'maven') {
         sh 'mvn test'
