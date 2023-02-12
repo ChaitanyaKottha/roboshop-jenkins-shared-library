@@ -26,7 +26,11 @@ def call() {
 
                 stage('Quality Control') {
                     steps {
-                        sh 'sonar-scanner -Dsonar.host.url=http://172.31.11.186:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectKey=cart'
+                        withAWSParameterStore(credentialsId: '', naming: 'relative', path:'/service', recursive: true, regionName: 'us-east-1')
+                                {
+                                    echo "Hello from QC"
+                                }
+                        //sh 'sonar-scanner -Dsonar.host.url=http://172.31.11.186:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectKey=cart'
                     }
                 }
 
