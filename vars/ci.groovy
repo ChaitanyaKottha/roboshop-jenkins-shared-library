@@ -4,6 +4,8 @@ def call() {
     }
     if(!env.TAG_NAME) {
         env.PUSH_CODE = 'false'
+    } else {
+        env.PUSH_CODE = 'true'
     }
     try {
         node('workstation') {
@@ -25,9 +27,12 @@ def call() {
                     sh "echo sonar scan"
                 }
             }
-            stage('Upload Code to Centralized Place'){
-                echo 'Upload'
+            if(env.PUSH_CODE = 'true') {
+                stage('Upload Code to Centralized Place'){
+                    echo 'Upload'
+                }
             }
+
         }
 
     } catch(Exception e) {
