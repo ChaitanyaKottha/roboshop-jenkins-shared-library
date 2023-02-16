@@ -30,8 +30,9 @@ def email(email_note) {
     mail bcc: '', body: "Job Failed - ${JOB_BASE_NAME}\nJenkins URL - ${JOB_URL}", cc: '', from: 'chythanya.k@gmail.com', replyTo: '', subject: "Jenkins Job Failed - ${JOB_BASE_NAME}", to: 'chythanya.k@gmail.com'
 }
 def artifactPush() {
+    sh "echo ${TAG_NAME} >VERSION"
     if (app_lang == 'nodejs') {
-        sh "zip -r cart-${TAG_NAME}.zip node_modules server.js"
+        sh "zip -r cart-${TAG_NAME}.zip node_modules server.js VERSION"
     }
     sh 'ls -l'
 }
